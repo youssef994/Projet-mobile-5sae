@@ -10,33 +10,34 @@
 
     <!-- Titre -->
 
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="314dp"
+        android:layout_height="58dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="36dp"
         android:layout_marginBottom="53dp"
         android:text="Liste des enseignants"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/tabLayout3"
-        app:layout_constraintStart_toStartOf="@+id/buttonmodifier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/enseignantsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout3"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="378dp"
+        android:layout_height="422dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonmodifier"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonmodifier" />
-
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout3"
@@ -54,28 +55,28 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Identifiant"
+            android:text="Prenom"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="245dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prenom"
+            android:text="Nom"
             tools:layout_editor_absoluteX="82dp"
             tools:layout_editor_absoluteY="245dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nom"
+            android:text="matiere"
             tools:layout_editor_absoluteX="164dp"
             tools:layout_editor_absoluteY="245dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matière"
+            android:text="email"
             tools:layout_editor_absoluteX="246dp"
             tools:layout_editor_absoluteY="245dp" />
 
@@ -100,20 +101,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tabLayout3"
         tools:ignore="MissingConstraints" />
 
+
     <Button
-        android:id="@+id/buttonsupprimer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="26dp"
-        android:layout_weight="1"
-        android:background="@color/rouge"
-        android:text="Supprimer"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonmodifier"
+        android:id="@+id/buttonModifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:onClick="onModifierButtonClick"
+        android:text="Modifier"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonmodifier"
-        app:layout_constraintTop_toTopOf="@+id/buttonmodifier"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextIdEnseignant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Enseignant ID"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonModifier"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
