@@ -23,5 +23,8 @@ public interface EnseignantDao {
 
     @Query("SELECT * FROM Enseignant")
     List<Enseignant> getAllEnseignants();
+
+    @Query("SELECT * FROM Enseignant WHERE id = :id")
+    Enseignant getEnseignantById(long id);
 }
 

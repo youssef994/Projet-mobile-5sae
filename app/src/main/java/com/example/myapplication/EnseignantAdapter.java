@@ -12,10 +12,24 @@ import java.util.List;
 public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.EnseignantViewHolder> {
 
     private List<Enseignant> enseignants;
+    private int selectedItem = RecyclerView.NO_POSITION;
+    private OnItemClickListener onItemClickListener;
+
+    public EnseignantAdapter(List<Enseignant> enseignants) {
+        this.enseignants = enseignants;
+    }
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 
     public void setEnseignants(List<Enseignant> enseignants) {
         this.enseignants = enseignants;
         notifyDataSetChanged();
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
     @NonNull
@@ -28,10 +42,29 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
     @Override
     public void onBindViewHolder(@NonNull EnseignantViewHolder holder, int position) {
         Enseignant enseignant = enseignants.get(position);
-        holder.nomTextView.setText("Nom: " + enseignant.getNom());
-        holder.prenomTextView.setText("Prenom: " + enseignant.getPrenom());
-        holder.emailTextView.setText("Email: " + enseignant.getEmail());
-        holder.matiereTextView.setText("Matière: " + enseignant.getMatiere());
+
+        holder.nomTextView.setText(enseignant.getNom());
+        holder.prenomTextView.setText(enseignant.getPrenom());
+        holder.emailTextView.setText(enseignant.getEmail());
+        holder.matiereTextView.setText(enseignant.getMatiere());
+
+        // Highlight the selected item
+        holder.itemView.setActivated(position == selectedItem);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Update selected item and notify the adapter
+                selectedItem = holder.getAdapterPosition();
+                notifyDataSetChanged();
+
+                // Notify the activity/fragment about the item click
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(selectedItem);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -40,6 +73,7 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
     }
 
     static class EnseignantViewHolder extends RecyclerView.ViewHolder {
+
         TextView nomTextView;
         TextView prenomTextView;
         TextView emailTextView;
@@ -47,6 +81,7 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
 
         public EnseignantViewHolder(@NonNull View itemView) {
             super(itemView);
+
             nomTextView = itemView.findViewById(R.id.nomTextView);
             prenomTextView = itemView.findViewById(R.id.prenomTextView);
             emailTextView = itemView.findViewById(R.id.emailTextView);
