@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Evenements")
+@Entity(tableName = "Evenement")
 public class Evenement {
 
     @PrimaryKey(autoGenerate = true)
@@ -17,17 +17,19 @@ public class Evenement {
     @ColumnInfo(name = "description")
     public String description;
 
+    @ColumnInfo(name = "clubId")
+    public long clubId; // Foreign key to link the event to a club
+
     @Ignore
     public Evenement() {
-        // Constructeur sans arguments annoté avec @Ignore
-        // Room ignorera ce constructeur lors de la création de la base de données
+        // Constructor without arguments annotated with @Ignore
+        // Room will ignore this constructor during database creation
     }
 
-
-    public Evenement(Long id,String datt,String description) {
+    public Evenement(Long id, String datt, String description, long clubId) {
         this.id = id;
         this.datt = datt;
         this.description = description;
+        this.clubId = clubId;
     }
-
 }

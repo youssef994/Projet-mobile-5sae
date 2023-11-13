@@ -9,18 +9,21 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+
 import com.example.myapplication.Interface.ClasseDao;
 import com.example.myapplication.Interface.EnseignantDao;
 import com.example.myapplication.Interface.EvaluationDao;
+import com.example.myapplication.Interface.ClubDao;
+import com.example.myapplication.Interface.EvenementDao;
 
-
-@Database(entities = {Enseignant.class, Evaluation.class, Classe.class}, version = 2)
+@Database(entities = {Enseignant.class, Evaluation.class, Classe.class,Club.class, Evenement.class}, version = 2)
 
 public abstract class MyDatabase extends RoomDatabase {
     public abstract EnseignantDao enseignantDao();
     public abstract EvaluationDao evaluationDao();
-
+     public abstract ClubDao clubDao();
     public abstract ClasseDao classeDao();
+
 
     private static MyDatabase instance;
 
