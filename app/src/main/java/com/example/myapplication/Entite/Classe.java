@@ -7,20 +7,20 @@ import androidx.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity(tableName = "Classes")
+@Entity
 public class Classe {
 
     @PrimaryKey(autoGenerate = true)
     public long id;
 
-    @ColumnInfo(name = "nom")
+
     public String nom;
 
-    @ColumnInfo(name = "specialite")
+
     public String specialite;
 
 
-    @ColumnInfo(name = "numero")
+
     public String numero;
 
 
@@ -28,7 +28,6 @@ public class Classe {
     @Ignore
     public List<Etudiant> etudiants;
 
-    @Ignore
     public Classe() {
         // Constructeur sans arguments annoté avec @Ignore
         // Room ignorera ce constructeur lors de la création de la base de données
@@ -75,11 +74,5 @@ public class Classe {
         this.numero = numero;
     }
 
-    public List<Etudiant> getEtudiants() {
-        return etudiants;
-    }
 
-    public void setEtudiants(List<Etudiant> etudiants) {
-        this.etudiants = etudiants;
-    }
 }

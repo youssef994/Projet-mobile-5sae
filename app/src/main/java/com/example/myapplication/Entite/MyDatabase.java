@@ -11,17 +11,18 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.myapplication.Interface.ClasseDao;
 import com.example.myapplication.Interface.EnseignantDao;
+import com.example.myapplication.Interface.EtudiantDao;
 import com.example.myapplication.Interface.EvaluationDao;
 
 
-@Database(entities = {Enseignant.class, Evaluation.class, Classe.class}, version = 2)
+@Database(entities = {Enseignant.class, Evaluation.class, Classe.class, Etudiant.class}, version = 3)
 
 public abstract class MyDatabase extends RoomDatabase {
     public abstract EnseignantDao enseignantDao();
     public abstract EvaluationDao evaluationDao();
 
     public abstract ClasseDao classeDao();
-
+    public abstract EtudiantDao etudiantDao();
     private static MyDatabase instance;
 
     public static synchronized MyDatabase getInstance(Context context) {
@@ -44,11 +45,15 @@ public abstract class MyDatabase extends RoomDatabase {
         }
     };
 
+
+
     private static class RemplissageInitialAsyncTask extends AsyncTask<Void, Void, Void> {
-        private ClasseDao classeDao; // Mettez à jour le type ici
+        private ClasseDao classeDao;
+        private EtudiantDao etudiantDao;
 
         private RemplissageInitialAsyncTask(MyDatabase db) {
-            classeDao = db.classeDao(); // Mettez à jour ici aussi
+            classeDao = db.classeDao();
+            etudiantDao = db.etudiantDao();
         }
 
         @Override

@@ -23,8 +23,8 @@ public interface EtudiantDao {
     @Delete
     void delete(Etudiant etudiant);
 
-    @Query("SELECT * FROM Etudiants")
-    List<Etudiant> getAllEtudiants();
+    @Query("SELECT * FROM Etudiant")
+    List<Etudiant> getAllEtudiant();
 
 }
 

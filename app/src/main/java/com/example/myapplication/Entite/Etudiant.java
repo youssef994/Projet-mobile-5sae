@@ -3,19 +3,74 @@ package com.example.myapplication.Entite;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Etudiants")
-public class Etudiant extends User {
+@Entity
+public class Etudiant  {
 
-    @ColumnInfo(name = "niveau")
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+
+    public String nom;
+
+    public String prenom;
+
+
+    public String email;
+
+
     public String niveau;
 
 
-    @ColumnInfo(name = "classe_id")
-    public long classeId; // Clé étrangère
+    public String identifiant;
 
-    @Ignore
+    public long classeId;
+
     public Etudiant() {
+    }
+
+
+    public Etudiant(String nom, String prenom, String email, String niveau, String identifiant, long classeId) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.niveau = niveau;
+        this.identifiant = identifiant;
+        this.classeId = classeId ;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNiveau() {
@@ -26,18 +81,12 @@ public class Etudiant extends User {
         this.niveau = niveau;
     }
 
-    public long getClasseId() {
-        return classeId;
+    public String getIdentifiant() {
+        return identifiant;
     }
 
-    public void setClasseId(long classeId) {
-        this.classeId = classeId;
-    }
-
-    public Etudiant(String niveau, long classeId) {
-        super();
-        this.niveau = niveau;
-        this.classeId = classeId;
+    public void setIdentifiant(String identifiant) {
+        this.identifiant = identifiant;
     }
 
 

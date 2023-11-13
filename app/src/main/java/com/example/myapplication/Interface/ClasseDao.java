@@ -21,7 +21,9 @@ public interface ClasseDao {
     @Delete
     void delete(Classe classe);
 
-    @Query("SELECT * FROM Classes")
-    List<Classe> getAllClubs();
+    @Query("SELECT * FROM Classe")
+    List<Classe> getAllClasses();
 
+    @Query("SELECT * FROM Classe  WHERE nom = :nomClasse")
+    Classe getClasseByName(String nomClasse);
 }
