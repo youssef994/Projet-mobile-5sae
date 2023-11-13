@@ -1,12 +1,17 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.Entite.Enseignant;
+
 import java.util.List;
 
 public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.EnseignantViewHolder> {
@@ -14,10 +19,13 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
     private List<Enseignant> enseignants;
     private int selectedItem = RecyclerView.NO_POSITION;
     private OnItemClickListener onItemClickListener;
+    private Context context;
 
-    public EnseignantAdapter(List<Enseignant> enseignants) {
+    public EnseignantAdapter(List<Enseignant> enseignants, Context context) {
         this.enseignants = enseignants;
+        this.context = context;
     }
+
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
@@ -26,7 +34,6 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
         this.enseignants = enseignants;
         notifyDataSetChanged();
     }
-
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
@@ -51,20 +58,19 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
         // Highlight the selected item
         holder.itemView.setActivated(position == selectedItem);
 
+        // Set the click listener for the entire itemView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Update selected item and notify the adapter
-                selectedItem = holder.getAdapterPosition();
-                notifyDataSetChanged();
+                // Get the clicked enseignant
+                Enseignant enseignant = enseignants.get(position);
 
-                // Notify the activity/fragment about the item click
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(selectedItem);
-                }
+                // Launch EnseignantDetail activity
+                Intent intent = new Intent(context, EnseignantDetail.class);
+                intent.putExtra("ENSEIGNANT_ID", enseignant.getId());
+                context.startActivity(intent);
             }
         });
-
     }
 
     @Override
