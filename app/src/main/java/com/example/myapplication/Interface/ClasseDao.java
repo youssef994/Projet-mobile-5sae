@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface ClasseDao {
     @Insert
-    void insert(Classe classe);
+    void insertStatique(Classe classe, Classe c2);
 
     @Update
     void update(Classe classe);
