@@ -18,11 +18,27 @@ public class Etudiant extends User {
     public Etudiant() {
     }
 
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
+    }
+
+    public long getClasseId() {
+        return classeId;
+    }
+
+    public void setClasseId(long classeId) {
+        this.classeId = classeId;
+    }
 
     public Etudiant(String niveau, long classeId) {
         super();
         this.niveau = niveau;
         this.classeId = classeId;
     }
+
 
 }
