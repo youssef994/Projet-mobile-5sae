@@ -22,6 +22,6 @@ public interface ClubDao {
     @Delete
     void delete(Club club);
 
-    @Query("SELECT * FROM Clubs")
+    @Query("SELECT * FROM Club")
     List<Club> getAllClubs();
 }
