@@ -2,10 +2,9 @@ package com.example.myapplication.Entite;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Evaluations")
+@Entity
 public class Evaluation {
 
     @PrimaryKey(autoGenerate = true)
@@ -20,19 +19,47 @@ public class Evaluation {
     @ColumnInfo(name = "remarque")
     public String remarque;
 
-    @Ignore
+    // Constructors
+
     public Evaluation() {
-        // Constructeur sans arguments annoté avec @Ignore
-        // Room ignorera ce constructeur lors de la création de la base de données
+        // Default constructor
     }
 
-
-    public Evaluation(Long id,String noteExamen,String noteCc, String remarque) {
-        this.id = id;
+    public Evaluation(String noteExamen, String noteCc, String remarque) {
         this.noteExamen = noteExamen;
         this.noteCc = noteCc;
         this.remarque = remarque;
-
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNoteExamen() {
+        return noteExamen;
+    }
+
+    public void setNoteExamen(String noteExamen) {
+        this.noteExamen = noteExamen;
+    }
+
+    public String getNoteCc() {
+        return noteCc;
+    }
+
+    public void setNoteCc(String noteCc) {
+        this.noteCc = noteCc;
+    }
+
+    public String getRemarque() {
+        return remarque;
+    }
+
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
 }

@@ -22,7 +22,9 @@ public interface EvaluationDao {
     @Delete
     void delete(Evaluation evaluation);
 
-    @Query("SELECT * FROM Evaluations")
+    @Query("SELECT * FROM Evaluation")
     List<Evaluation> getAllEvaluations();
 
+    @Query("SELECT * FROM Evaluation WHERE id = :id")
+    Evaluation getEvaluationById(long id);
 }
