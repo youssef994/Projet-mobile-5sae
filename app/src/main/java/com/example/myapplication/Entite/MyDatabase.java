@@ -7,10 +7,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.myapplication.Interface.EnseignantDao;
+import com.example.myapplication.Interface.EvaluationDao;
 
-@Database(entities = {Enseignant.class}, version = 1)
+@Database(entities = {Enseignant.class, Evaluation.class}, version =2)
 public abstract class MyDatabase extends RoomDatabase {
     public abstract EnseignantDao enseignantDao();
+    public abstract EvaluationDao evaluationDao();
 
     private static MyDatabase instance;
 
@@ -24,4 +26,3 @@ public abstract class MyDatabase extends RoomDatabase {
         return instance;
     }
 }
-
