@@ -11,14 +11,18 @@ public class Etudiant extends User {
     public String niveau;
 
 
+    @ColumnInfo(name = "classe_id")
+    public long classeId; // Clé étrangère
+
     @Ignore
     public Etudiant() {
     }
 
 
-    public Etudiant(String niveau) {
+    public Etudiant(String niveau, long classeId) {
         super();
         this.niveau = niveau;
+        this.classeId = classeId;
     }
 
 }

@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "Classes")
 public class Classe {
 
@@ -20,6 +22,10 @@ public class Classe {
 
     @ColumnInfo(name = "numero")
     public String numero;
+
+    // Liste d'étudiants dans cette classe
+    @Ignore
+    public List<Etudiant> etudiants;
 
     @Ignore
     public Classe() {
