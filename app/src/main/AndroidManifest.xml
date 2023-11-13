@@ -64,6 +64,10 @@
         <activity
             android:name=".ListeEtudiants"
             android:exported="false" />
+            <activity
+        android:name=".EnseignantDetail"
+        android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
