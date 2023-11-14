@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ public class ListeEnseignants extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private EnseignantAdapter enseignantAdapter;
+    private SearchView searchView;
 
     private List<Enseignant> enseignants = new ArrayList<>();
 
@@ -38,6 +41,25 @@ public class ListeEnseignants extends AppCompatActivity {
             public void onItemClick(int position) {
 
             }
+        });
+
+        // Initialize SearchView
+        searchView = findViewById(R.id.searchViewEnseignants);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle search query submit if needed
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the list based on the search query
+                Log.d("SearchView", "Query: " + newText);
+                enseignantAdapter.filterEnseignants(newText);
+                return true;
+            }
+
+
         });
 
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.EvaluationViewHolder> {
 
-    private List<Evaluation> evaluations;
+    public List<Evaluation> evaluations;
     private Context context;
     private OnItemClickListener onItemClickListener;
     private int selectedItem = RecyclerView.NO_POSITION;

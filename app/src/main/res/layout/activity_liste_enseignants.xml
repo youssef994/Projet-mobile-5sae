@@ -99,8 +99,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout3"
         tools:ignore="MissingConstraints" />
-
-
+    <!-- Inside your layout file -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewEnseignants"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/buttonmodifier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout3"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Enseignants..." />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

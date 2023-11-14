@@ -1,7 +1,6 @@
 package com.example.myapplication.Entite;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -11,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
 import com.example.myapplication.Interface.ClasseDao;
+import com.example.myapplication.Interface.ClubDao;
 import com.example.myapplication.Interface.EnseignantDao;
 import com.example.myapplication.Interface.EtudiantDao;
 import com.example.myapplication.Interface.EvaluationDao;
@@ -22,6 +22,7 @@ import com.example.myapplication.Interface.EvenementDao;
 public abstract class MyDatabase extends RoomDatabase {
     public abstract EnseignantDao enseignantDao();
     public abstract EvaluationDao evaluationDao();
+
      public abstract ClubDao clubDao();
     public abstract ClasseDao classeDao();
 
