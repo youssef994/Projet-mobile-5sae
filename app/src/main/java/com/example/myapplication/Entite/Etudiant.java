@@ -25,19 +25,20 @@ public class Etudiant  {
 
     public String identifiant;
 
-    public long classeId;
+
+   // public long classeId;
 
     public Etudiant() {
     }
 
 
-    public Etudiant(String nom, String prenom, String email, String niveau, String identifiant, long classeId) {
+    public Etudiant(String nom, String prenom, String email, String niveau, String identifiant) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.niveau = niveau;
         this.identifiant = identifiant;
-        this.classeId = classeId ;
+
     }
 
 

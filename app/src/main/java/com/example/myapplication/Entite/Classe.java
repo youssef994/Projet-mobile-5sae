@@ -25,8 +25,8 @@ public class Classe {
 
 
     // Liste d'étudiants dans cette classe
-    @Ignore
-    public List<Etudiant> etudiants;
+   // @Ignore
+   // public List<Etudiant> etudiants;
 
     public Classe() {
         // Constructeur sans arguments annoté avec @Ignore
