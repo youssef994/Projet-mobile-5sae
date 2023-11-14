@@ -1,7 +1,6 @@
 package com.example.myapplication.Entite;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -10,17 +9,20 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.myapplication.Interface.ClasseDao;
+import com.example.myapplication.Interface.ClubDao;
 import com.example.myapplication.Interface.EnseignantDao;
+import com.example.myapplication.Interface.EtudiantDao;
 import com.example.myapplication.Interface.EvaluationDao;
 
-
-@Database(entities = {Enseignant.class, Evaluation.class, Classe.class}, version = 2)
+@Database(entities = {Enseignant.class, Evaluation.class, Classe.class,Club.class, Evenement.class, Etudiant.class}, version = 2)
 
 public abstract class MyDatabase extends RoomDatabase {
     public abstract EnseignantDao enseignantDao();
     public abstract EvaluationDao evaluationDao();
-
+    public abstract ClubDao clubDao();
     public abstract ClasseDao classeDao();
+
+    public abstract EtudiantDao etudiantDao();
 
     private static MyDatabase instance;
 
@@ -40,37 +42,9 @@ public abstract class MyDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new RemplissageInitialAsyncTask(instance).execute();
         }
     };
 
-    private static class RemplissageInitialAsyncTask extends AsyncTask<Void, Void, Void> {
-        private ClasseDao classeDao; // Mettez à jour le type ici
-
-        private RemplissageInitialAsyncTask(MyDatabase db) {
-            classeDao = db.classeDao(); // Mettez à jour ici aussi
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            // Insérez vos données statiques ici
-            Classe c1 = new Classe();
-            c1.setId(1);
-            c1.setNom("5SAE5");
-            c1.setSpecialite("SAE");
-            c1.setNumero("5");
-
-            Classe c2 = new Classe();
-            c2.setId(2);
-            c2.setNom("5TWIN4");
-            c2.setSpecialite("TWIN");
-            c2.setNumero("4");
-
-            classeDao.insertStatique(c1, c2); // Mettez à jour ici aussi
-
-            return null;
-        }
-    }
 
 
 }
