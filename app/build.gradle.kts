@@ -56,7 +56,9 @@ dependencies {
     implementation ("com.facebook.stetho:stetho:1.5.1")
     implementation ("com.facebook.stetho:stetho-okhttp3:1.5.1")
 
-      
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.2")
+    implementation ("androidx.multidex:multidex:2.0.1")
 
 
 }

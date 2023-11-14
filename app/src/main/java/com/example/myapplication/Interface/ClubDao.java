@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.myapplication.Entite.Club;
+import com.example.myapplication.Entite.Enseignant;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface ClubDao {
 
     @Query("SELECT * FROM Club")
     List<Club> getAllClubs();
+    @Query("SELECT * FROM Club WHERE id = :id")
+    Club getClubById(long id);
 }

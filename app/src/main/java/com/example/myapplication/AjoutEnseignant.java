@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +61,8 @@ public class AjoutEnseignant extends AppCompatActivity {
                     protected Void doInBackground(Void... voids) {
                         EnseignantDao enseignantDao = MyDatabase.getInstance(AjoutEnseignant.this).enseignantDao();
                         enseignantDao.insert(enseignant);
+                        Intent i = new Intent(getApplicationContext(),ListeEnseignants.class);
+                        startActivity(i);
                         return null;
                     }
 

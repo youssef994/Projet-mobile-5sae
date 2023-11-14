@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".clubDetails"
+            android:exported="false" />
+        <activity
             android:name=".item_club"
             android:exported="false" />
         <activity
@@ -70,13 +73,12 @@
         <activity
             android:name=".ListeEtudiants"
             android:exported="false" />
-            <activity
-        android:name=".EnseignantDetail"
-        android:exported="false" />
         <activity
-        android:name=".EvaluationDetail"
-        android:exported="false" />
-
+            android:name=".EnseignantDetail"
+            android:exported="false" />
+        <activity
+            android:name=".EvaluationDetail"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

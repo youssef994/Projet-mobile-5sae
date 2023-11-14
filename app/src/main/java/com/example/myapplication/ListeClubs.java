@@ -19,12 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListeClubs extends AppCompatActivity {
-  /*  private RecyclerView recyclerView;
-    private ClubAdapter ClubAdapter;
-    private MyDatabase appDatabase;*/
-
-    private RecyclerView recyclerView;
+   private RecyclerView recyclerView;
     private ClubAdapter clubAdapter;
+
 
     private List<Club> clubs = new ArrayList<>();
 
@@ -34,50 +31,48 @@ public class ListeClubs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_clubs);
 
-        // Initialize RecyclerView
+
         recyclerView = findViewById(R.id.clubRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize and set the adapter
-        // Initialize and set the adapter
-        clubAdapter = new ClubAdapter(new ArrayList<>()); // Pass a non-null list here
 
+        clubAdapter = new ClubAdapter(new ArrayList<>(), this); // Pass a non-null list here
 
-        // Set item click listener
+        recyclerView.setAdapter(clubAdapter);
+
         clubAdapter.setOnItemClickListener(new ClubAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                if (clubs != null && position < clubs.size()) {
-                    Intent intent = new Intent(ListeClubs.this, ModifierEnseignant.class);
-                    intent.putExtra("CLUB_ID", clubs.get(position).getId());
-                    startActivity(intent);
-                } else {
+             //   if (clubs != null && position < clubs.size()) {
+                //    Intent intent = new Intent(ListeClubs.this, ModifierEnseignant.class);
+//                    startActivity(intent);
+            //    } else {
                     // Log or show a message indicating that the list is null or the position is invalid
-                }
+             //   }
             }
         });
 
 
         recyclerView.setAdapter(clubAdapter);
 
-        // Load the list of enseignants from your Room database
         loadClubs();
     }
 
     private void loadClubs() {
-        // Use a background thread to retrieve the list of enseignants
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // Retrieve the list of enseignants from the Room database
+
                 ClubDao clubDao = MyDatabase.getInstance(ListeClubs.this).clubDao();
+
                 final List<Club> clubs = clubDao.getAllClubs();
 
-                // Update the adapter with the list of enseignants on the main thread
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        clubAdapter.setClubs(clubs);//setEnseignants(enseignants);
+                        clubAdapter.setClubs(clubs);
                     }
                 });
             }
