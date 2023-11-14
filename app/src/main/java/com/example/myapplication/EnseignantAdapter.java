@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Entite.Enseignant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.EnseignantViewHolder> {
 
     private List<Enseignant> enseignants;
     private int selectedItem = RecyclerView.NO_POSITION;
+
+    private List<Enseignant> filteredEnseignants;  // Add this line
+
     private OnItemClickListener onItemClickListener;
     private Context context;
 
     public EnseignantAdapter(List<Enseignant> enseignants, Context context) {
         this.enseignants = enseignants;
+        this.filteredEnseignants = new ArrayList<>(enseignants);  // Add this line
+
         this.context = context;
     }
 
@@ -32,7 +39,29 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
 
     public void setEnseignants(List<Enseignant> enseignants) {
         this.enseignants = enseignants;
+        this.filteredEnseignants = new ArrayList<>(enseignants);  // Update this line
+
         notifyDataSetChanged();
+    }
+
+    public void filterEnseignants(String query) {
+        filteredEnseignants.clear();
+
+        // If the query is empty, show all items
+        if (query.isEmpty()) {
+            filteredEnseignants.addAll(enseignants);
+        } else {
+            // Filter the list based on the query
+            String lowerCaseQuery = query.toLowerCase();
+            for (Enseignant enseignant : enseignants) {
+                if (enseignant.getNom().toLowerCase().contains(lowerCaseQuery))
+                       {
+                    filteredEnseignants.add(enseignant);
+                }
+            }
+        }
+
+        notifyDataSetChanged(); // Notify the adapter of the dataset change
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -48,6 +77,7 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
 
     @Override
     public void onBindViewHolder(@NonNull EnseignantViewHolder holder, int position) {
+        Log.d("Adapter", "onBindViewHolder called for position: " + position);
         Enseignant enseignant = enseignants.get(position);
 
         holder.nomTextView.setText(enseignant.getNom());
@@ -75,7 +105,9 @@ public class EnseignantAdapter extends RecyclerView.Adapter<EnseignantAdapter.En
 
     @Override
     public int getItemCount() {
-        return enseignants != null ? enseignants.size() : 0;
+        int itemCount = enseignants != null ? enseignants.size() : 0;
+        Log.d("Adapter", "getItemCount: " + itemCount);
+        return itemCount;
     }
 
     static class EnseignantViewHolder extends RecyclerView.ViewHolder {

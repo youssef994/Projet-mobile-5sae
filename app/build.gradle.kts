@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation ("com.itextpdf:itext7-core:7.1.15")
+    implementation ("com.itextpdf:layout:7.0.2")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
