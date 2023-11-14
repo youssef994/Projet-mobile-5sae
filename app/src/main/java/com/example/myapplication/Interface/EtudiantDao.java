@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.myapplication.Entite.Enseignant;
 import com.example.myapplication.Entite.Etudiant;
 
 
@@ -23,8 +24,12 @@ public interface EtudiantDao {
     @Delete
     void delete(Etudiant etudiant);
 
-    @Query("SELECT * FROM Etudiants")
-    List<Etudiant> getAllEtudiants();
+    @Query("SELECT * FROM Etudiant")
+    List<Etudiant> getAllEtudiant();
+
+
+    @Query("SELECT * FROM Etudiant WHERE id = :id")
+    Enseignant getEtudiantById(long id);
 
 }
 

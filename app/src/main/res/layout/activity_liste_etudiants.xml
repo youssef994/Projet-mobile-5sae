@@ -17,24 +17,33 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="53dp"
-        android:text="Liste des étudiants"
+        android:layout_marginBottom="51dp"
+        android:text="Liste des Etudiants"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout4"
-        app:layout_constraintEnd_toEndOf="@+id/tabLayout4"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/tabLayout2"
         app:layout_constraintStart_toStartOf="@+id/buttonmodifier"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/etudiantRecyclerView"
+        android:layout_width="378dp"
+        android:layout_height="422dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonmodifier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout2"
+        app:layout_constraintVertical_bias="0.0" />
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout4"
+        android:id="@+id/tabLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="439dp"
+        android:layout_marginBottom="431dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonmodifier"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,29 +54,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Identifiant"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="245dp" />
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="149dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Prenom"
-            tools:layout_editor_absoluteX="82dp"
-            tools:layout_editor_absoluteY="245dp" />
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="149dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nom"
-            tools:layout_editor_absoluteX="164dp"
-            tools:layout_editor_absoluteY="245dp" />
-
+            tools:layout_editor_absoluteX="272dp"
+            tools:layout_editor_absoluteY="149dp" />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Niveau"
-            tools:layout_editor_absoluteX="246dp"
-            tools:layout_editor_absoluteY="245dp" />
+            tools:layout_editor_absoluteX="272dp"
+            tools:layout_editor_absoluteY="149dp" />
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -77,33 +85,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="31dp"
-        android:layout_marginEnd="76dp"
         android:layout_marginBottom="69dp"
         android:layout_weight="1"
-        android:background="@color/orange"
-        android:text="Modifier"
+
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonsupprimer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout4"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/buttonsupprimer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="26dp"
-        android:layout_weight="1"
-        android:background="@color/rouge"
-        android:text="Supprimer"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonmodifier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonmodifier"
-        app:layout_constraintTop_toTopOf="@+id/buttonmodifier"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout2"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface ClasseDao {
     @Insert
-    void insertStatique(Classe classe, Classe c2);
+    void insert(Classe classe);
 
     @Update
     void update(Classe classe);
@@ -21,7 +21,9 @@ public interface ClasseDao {
     @Delete
     void delete(Classe classe);
 
-    @Query("SELECT * FROM Classes")
-    List<Classe> getAllClubs();
+    @Query("SELECT * FROM Classe")
+    List<Classe> getAllClasses();
 
+    @Query("SELECT * FROM Classe  WHERE nom = :nomClasse")
+    Classe getClasseByName(String nomClasse);
 }

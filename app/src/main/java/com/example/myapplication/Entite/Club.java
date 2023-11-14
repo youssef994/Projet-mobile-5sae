@@ -5,8 +5,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
-@Entity(tableName = "Clubs")
+import java.util.List;
+
+@Entity(tableName = "Club")
 public class Club {
 
     @PrimaryKey(autoGenerate = true)
@@ -15,11 +18,14 @@ public class Club {
     @ColumnInfo(name = "nom")
     public String nom;
 
-    @ColumnInfo(name = "nbr_p")
-    public String nbr_p;
+    @ColumnInfo(name = "president")
+    public String president;
+    @ColumnInfo(name = "vicep")
+    public String vicep;
 
     @ColumnInfo(name = "description")
     public String description;
+
 
     @Ignore
     public Club() {
@@ -28,10 +34,52 @@ public class Club {
     }
 
 
-    public Club(Long id,String nom,String nbr_p, String description) {
+    public Club(long id, String nom, String president, String vicep, String description) {
         this.id = id;
         this.nom = nom;
-        this.nbr_p = nbr_p;
+        this.president = president;
+        this.vicep = vicep;
+        this.description = description;
+    }
+//getter and setters
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPresident() {
+        return president;
+    }
+
+    public void setPresident(String president) {
+        this.president = president;
+    }
+
+    public String getVicep() {
+        return vicep;
+    }
+
+    public void setVicep(String vicep) {
+        this.vicep = vicep;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
